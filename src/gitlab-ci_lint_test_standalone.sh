@@ -79,6 +79,7 @@ fi
 if [ -f "${SRC_FOLDER}" ]; then
     eval "$BINARY_NAME ${SRC_FOLDER}"
 else
+    shopt -s dotglob
     for SINGLE_FILE in "${SRC_FOLDER}"/*
     do
         echo "Checking ${SINGLE_FILE}..."
