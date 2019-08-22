@@ -32,11 +32,16 @@ And also define the stages you want to use. It can be both or just one. Remember
 stages:
 ```
 
+## DOCUMENTATION
+
+- [Shellcheck](https://github.com/koalaman/shellcheck)
+
 ## TODO
 
 - [ ] Fix documentation.
 - [X] Add gitlab lint test.
 - [ ] Add script to download test script from gitlab pages.
+- [ ] Zip all scripts and put inside pages.
 
 ----------------------
 
