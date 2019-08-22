@@ -8,28 +8,35 @@ This project contains Linux bash scripts to use locally or in gitlab-ci template
 
 <!-- TODO: add scripts -->
 
-## HOW TO USE
+### GITLAB-CI LINT TEST
 
-To use it, you can include them as following (using repository aproach):
-<!-- TODO: add example to download from curl and wget. -->
+You can test your .gitlab-ci.yml files by executing the following:
+
 ```bash
-
+curl -s https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_test_standalone.sh | bash /dev/stdin
 ```
+
+That script contains the following options:
+
+```bash
+-h | --help: display help.
+-o | --only: the name of the file or folder to test.
+```
+
+Also you can download the script by:
+
+```bash
+curl -o gitlab-ci_lint_test_standalone.sh -L https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_test_standalone.sh
+```
+
+## STRUCTURE
 
 Master branch is setup as latest folder. To use an specific version, put the version name before the file name like:
 
-```yaml
-include:
-  - remote: 'https://singletonsd.gitlab.io/pipelines/angular/1.0.0/.gitlab-ci-main.yml'
-  - remote: 'https://singletonsd.gitlab.io/singletonsd/pipelines/angular/develop/.gitlab-ci-test-main.yml'
-  - remote: 'https://singletonsd.gitlab.io/singletonsd/pipelines/angular/feature-new/.gitlab-ci-main.yml'
-```
-
-And also define the stages you want to use. It can be both or just one. Remember to include the one you want or main if you use both, like following:
-
-<!-- TODO: add stages-->
-```yaml
-stages:
+```url
+https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_test_standalone.sh
+https://singletonsd.gitlab.io/scripts/gitlab-ci/develop/gitlab-ci_lint_test_standalone.sh
+https://singletonsd.gitlab.io/scripts/gitlab-ci/v0.0.2/gitlab-ci_lint_test_standalone.sh
 ```
 
 ## DOCUMENTATION
@@ -40,7 +47,7 @@ stages:
 
 - [ ] Fix documentation.
 - [X] Add gitlab lint test.
-- [ ] Add script to download test script from gitlab pages.
+- [X] Add script to download test script from gitlab pages.
 - [ ] Zip all scripts and put inside pages.
 
 ----------------------
