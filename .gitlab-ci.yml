@@ -23,7 +23,7 @@ pages:
       else
         export TARGET_FOLDER=public/${CI_COMMIT_REF_NAME};
       fi
-    - apk add --no-cache bash curl
+    - apk add --no-cache bash curl zip
   script:
     - mkdir -p binaries
     - curl -o binaries/zip_files.sh -L https://singletonsd.gitlab.io/scripts/common/latest/zip_files.sh
