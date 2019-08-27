@@ -37,4 +37,11 @@ if ! type "$GITLAB_EXECUTE" &> /dev/null; then
     fi
 fi
 
-eval "${__dir}/common_test.sh" -b="$GITLAB_EXECUTE" "$@"
+mkdir -p binaries
+
+if [ ! -f "binaries/common_test.sh" ]; then
+    curl -o binaries/common_test.sh -L https://singletonsd.gitlab.io/scripts/common/latest/bash_common.sh
+    chmod +x binaries/common_test.sh
+fi
+
+eval "binaries/common_test.sh" -b="$GITLAB_EXECUTE" "$@"

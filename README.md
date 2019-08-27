@@ -6,8 +6,6 @@ This project contains Linux bash scripts to use locally or in gitlab-ci template
 
 ## AVAILABLE SCRIPTS
 
-<!-- TODO: add scripts -->
-
 ### GITLAB-CI LINT TEST
 
 You can test your .gitlab-ci.yml files by executing the following:
@@ -23,10 +21,20 @@ That script contains the following options:
 -o | --only: the name of the file or folder to test.
 ```
 
-Also you can download the script by:
+It can be downloaded by:
 
 ```bash
 curl -o gitlab-ci_lint_test_standalone.sh -L https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_test_standalone.sh
+```
+
+## DOWLOAD
+
+All scripts are available also inside a zip file under [this url](https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/scripts.zip). Or you can execute the following to download:
+
+```bash
+mkdir -p binaries && \
+curl -o binaries/scripts.zip -L https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/scripts.zip && \
+cd binaries && unzip scripts.zip && mv src/* . && rm -r src && rm -r scripts.zip && cd ..
 ```
 
 ## STRUCTURE
@@ -45,10 +53,11 @@ https://singletonsd.gitlab.io/scripts/gitlab-ci/v0.0.2/gitlab-ci_lint_test_stand
 
 ## TODO
 
-- [ ] Fix documentation.
+- [X] Fix documentation.
 - [X] Add gitlab lint test.
 - [X] Add script to download test script from gitlab pages.
-- [ ] Zip all scripts and put inside pages.
+- [X] Zip all scripts and put inside pages.
+- [ ] Use gitlab-ci template.
 
 ----------------------
 
