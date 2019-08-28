@@ -44,10 +44,17 @@ if [ ! -f "${BASE_FOLDER}pre-commit" ]; then
     echo "not found, installing..."
     HOOK="${BASE_FOLDER}pre-commit"
     cat > "$HOOK" <<    EOF
-    #!/bin/sh
-    ./.git/hooks/${SCRIPT_NAME}
-EOF
+#!/bin/sh
 
+#Exit when a command fails.
+set -o errexit
+
+./.git/hooks/${SCRIPT_NAME}
+if [ -d "examples" ]; then
+    ./.git/hooks/${SCRIPT_NAME} -o=examples
+fi
+./.git/hooks/${SCRIPT_NAME} -o=.gitlab-ci.yml
+EOF
     chmod +x ${BASE_FOLDER}pre-commit
 else
     echo "FOUND."
