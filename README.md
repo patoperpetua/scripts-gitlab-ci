@@ -37,6 +37,14 @@ curl -o binaries/scripts.zip -L https://singletonsd.gitlab.io/scripts/gitlab-ci/
 cd binaries && unzip scripts.zip && mv src/* . && rm -r src && rm -r scripts.zip && cd ..
 ```
 
+## GIT HOOK
+
+You can setup gitlab lint tester to be run before a commit. To do that just execute the following script under your git repository:
+
+```bash
+curl -s https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_hook_installer.sh | bash /dev/stdin
+```
+
 ## STRUCTURE
 
 Master branch is setup as latest folder. To use an specific version, put the version name before the file name like:
@@ -57,7 +65,8 @@ https://singletonsd.gitlab.io/scripts/gitlab-ci/v0.0.2/gitlab-ci_lint_test_stand
 - [X] Add gitlab lint test.
 - [X] Add script to download test script from gitlab pages.
 - [X] Zip all scripts and put inside pages.
-- [ ] Use gitlab-ci template.
+- [X] Use gitlab-ci template.
+- [X] Create a git hook installer.
 
 ----------------------
 
