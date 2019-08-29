@@ -26,15 +26,27 @@ if ! type "curl" &> /dev/null; then
 fi
 
 BASE_FOLDER=".git/hooks/"
-SCRIPT_NAME="gitlab-ci_lint_test_standalone.sh"
-SCRIPT_PATH="${BASE_FOLDER}${SCRIPT_NAME}"
+SCRIPT_NAME_S="bash_script_test_standalone.sh"
+SCRIPT_PATH_S="${BASE_FOLDER}${SCRIPT_NAME_S}"
+SCRIPT_NAME_G="gitlab-ci_lint_test_standalone.sh"
+SCRIPT_PATH_G="${BASE_FOLDER}${SCRIPT_NAME_G}"
 
-echo -ne "Checking script..."
-if [ ! -f "${SCRIPT_PATH}" ]; then
+echo -ne "Checking script ${SCRIPT_NAME_S}..."
+if [ ! -f "${SCRIPT_PATH_S}" ]; then
     echo "Not found, installing..."
-    curl -o "${SCRIPT_PATH}" \
-    -L https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_test_standalone.sh
-    chmod +x ${SCRIPT_PATH}
+    curl -o "${SCRIPT_PATH_S}" \
+    -L https://singletonsd.gitlab.io/scripts/common/latest/${SCRIPT_NAME_S}
+    chmod +x ${SCRIPT_PATH_S}
+else
+    echo "FOUND."
+fi
+
+echo -ne "Checking script ${SCRIPT_NAME_G}..."
+if [ ! -f "${SCRIPT_PATH_G}" ]; then
+    echo "Not found, installing..."
+    curl -o "${SCRIPT_PATH_G}" \
+    -L https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/${SCRIPT_NAME_G}
+    chmod +x ${SCRIPT_PATH_G}
 else
     echo "FOUND."
 fi
@@ -49,11 +61,17 @@ if [ ! -f "${BASE_FOLDER}pre-commit" ]; then
 #Exit when a command fails.
 set -o errexit
 
-./.git/hooks/${SCRIPT_NAME}
+./.git/hooks/${SCRIPT_NAME_G}
+
 if [ -d "examples" ]; then
-    ./.git/hooks/${SCRIPT_NAME} -o=examples
+    ./.git/hooks/${SCRIPT_NAME_G} -o=examples
 fi
-./.git/hooks/${SCRIPT_NAME} -o=.gitlab-ci.yml
+
+./.git/hooks/${SCRIPT_NAME_G} -o=.gitlab-ci.yml
+
+if [ -f ".gitlab-ci.yml" ]; then
+    ./.git/hooks/${SCRIPT_NAME_G} -o=.gitlab-ci.yml
+fi
 EOF
     chmod +x ${BASE_FOLDER}pre-commit
 else

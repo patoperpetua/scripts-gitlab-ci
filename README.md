@@ -27,7 +27,7 @@ It can be downloaded by:
 curl -o gitlab-ci_lint_test_standalone.sh -L https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/gitlab-ci_lint_test_standalone.sh
 ```
 
-## DOWLOAD
+## DOWNLOAD
 
 All scripts are available also inside a zip file under [this url](https://singletonsd.gitlab.io/scripts/gitlab-ci/latest/scripts.zip). Or you can execute the following to download:
 
